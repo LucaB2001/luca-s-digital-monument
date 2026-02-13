@@ -7,7 +7,7 @@ interface Location {
   country: string;
   lat: number;
   lng: number;
-  type: "lived" | "traveled";
+  type: "lived" | "living" | "traveled";
 }
 
 const locations: Location[] = [
@@ -15,7 +15,7 @@ const locations: Location[] = [
   { country: "United States", lat: 39.8283, lng: -98.5795, type: "lived" },
   { country: "Hawaii", lat: 20.7984, lng: -156.3319, type: "lived" },
   { country: "France", lat: 46.6034, lng: 1.8883, type: "lived" },
-  { country: "Japan", lat: 36.2048, lng: 138.2529, type: "lived" },
+  { country: "Japan", lat: 36.2048, lng: 138.2529, type: "living" },
   { country: "Singapore", lat: 1.3521, lng: 103.8198, type: "lived" },
   // Traveled
   { country: "Brazil", lat: -14.235, lng: -51.9253, type: "traveled" },
@@ -68,6 +68,7 @@ const createPinIcon = (color: string) =>
   });
 
 const redPin = createPinIcon("#FF0000");
+const bluePin = createPinIcon("#2563eb");
 const greenPin = createPinIcon("#00CC66");
 
 const CountUp = ({ target }: { target: number }) => {
@@ -127,15 +128,20 @@ const MapSection = () => {
       }
     ).addTo(map);
 
+    const getPin = (t: Location["type"]) =>
+      t === "lived" ? redPin : t === "living" ? bluePin : greenPin;
+    const getLabel = (t: Location["type"]) =>
+      t === "lived" ? "Lived here" : t === "living" ? "Living Here" : "Visited";
+
     locations.forEach((loc) => {
       const marker = L.marker([loc.lat, loc.lng], {
-        icon: loc.type === "lived" ? redPin : greenPin,
+        icon: getPin(loc.type),
       }).addTo(map);
 
       marker.bindPopup(
         `<div style="font-family:Inter,sans-serif;padding:4px">
           <strong style="font-size:15px">${loc.country}</strong>
-          <p style="margin:4px 0 0;color:#555;font-size:13px">${loc.type === "lived" ? "Lived here" : "Visited"}</p>
+          <p style="margin:4px 0 0;color:#555;font-size:13px">${getLabel(loc.type)}</p>
         </div>`,
         { className: "custom-popup" }
       );
@@ -163,13 +169,20 @@ const MapSection = () => {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center justify-center gap-8 mt-6 text-sm text-muted-foreground">
+      <div className="flex items-center justify-center gap-8 mt-6 text-sm text-muted-foreground flex-wrap">
         <div className="flex items-center gap-2">
           <svg width="16" height="24" viewBox="0 0 24 36" fill="none">
             <path d="M12 0C5.372 0 0 5.372 0 12c0 9 12 24 12 24s12-15 12-24c0-6.628-5.372-12-12-12z" fill="#FF0000"/>
             <circle cx="12" cy="12" r="5" fill="white"/>
           </svg>
           Countries I've lived in
+        </div>
+        <div className="flex items-center gap-2">
+          <svg width="16" height="24" viewBox="0 0 24 36" fill="none">
+            <path d="M12 0C5.372 0 0 5.372 0 12c0 9 12 24 12 24s12-15 12-24c0-6.628-5.372-12-12-12z" fill="#2563eb"/>
+            <circle cx="12" cy="12" r="5" fill="white"/>
+          </svg>
+          Living Here
         </div>
         <div className="flex items-center gap-2">
           <svg width="16" height="24" viewBox="0 0 24 36" fill="none">
