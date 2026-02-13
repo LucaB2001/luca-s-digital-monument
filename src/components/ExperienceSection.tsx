@@ -2,7 +2,7 @@ const companies = [
   { name: "UFC", logo: "/logos/ufc.png", url: "https://ufc.com/" },
   { name: "Ultra Super New", logo: "/logos/ultrasupernew.png", url: "https://ultrasupernew.com/" },
   { name: "First Round Management", logo: "/logos/frm.png", url: "https://1str.com/" },
-  { name: "On The House", logo: "/logos/oth.png", url: "https://othnetwork.io/" },
+  { name: "Ligue 1", logo: "/logos/ligue1.png", url: "https://ligue1.com/en" },
 ];
 
 const ExperienceSection = () => {
