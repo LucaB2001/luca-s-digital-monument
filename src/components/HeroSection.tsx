@@ -1,18 +1,22 @@
 import { motion } from "framer-motion";
+import luca1 from "@/assets/luca-1.jpeg";
+import luca2 from "@/assets/luca-2.jpeg";
+import luca3 from "@/assets/luca-3.jpeg";
+import luca4 from "@/assets/luca-4.jpeg";
+import luca5 from "@/assets/luca-5.jpeg";
+import luca6 from "@/assets/luca-6.jpeg";
+import luca7 from "@/assets/luca-7.jpeg";
+import luca8 from "@/assets/luca-8.jpeg";
+import luca9 from "@/assets/luca-9.jpeg";
+import luca10 from "@/assets/luca-10.jpeg";
 
-const placeholderImages = [
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&h=600&fit=crop",
-];
+const images = [luca1, luca2, luca3, luca4, luca5, luca6, luca7, luca8, luca9, luca10];
 
 const HeroSection = () => {
-  const doubled = [...placeholderImages, ...placeholderImages];
+  const doubled = [...images, ...images];
   const cardWidth = 420;
   const gap = 24;
-  const totalWidth = placeholderImages.length * (cardWidth + gap);
+  const totalWidth = images.length * (cardWidth + gap);
 
   return (
     <section
@@ -28,7 +32,6 @@ const HeroSection = () => {
         </p>
       </div>
 
-      {/* Carousel */}
       <div className="w-full overflow-hidden">
         <motion.div
           className="flex"
@@ -38,7 +41,7 @@ const HeroSection = () => {
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: placeholderImages.length * 6,
+              duration: images.length * 6,
               ease: "linear",
             },
           }}
@@ -51,7 +54,7 @@ const HeroSection = () => {
             >
               <img
                 src={src}
-                alt={`Luca Berger photo ${(i % placeholderImages.length) + 1}`}
+                alt={`Luca Berger photo ${(i % images.length) + 1}`}
                 className="w-full h-full object-cover"
                 loading={i > 3 ? "lazy" : "eager"}
               />

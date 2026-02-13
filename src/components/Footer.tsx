@@ -1,11 +1,9 @@
-import { Linkedin, Twitter, Instagram, Github, Mail } from "lucide-react";
+import { Linkedin, Instagram, Youtube } from "lucide-react";
 
 const socials = [
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", external: true },
-  { icon: Twitter, label: "Twitter/X", href: "https://x.com", external: true },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com", external: true },
-  { icon: Github, label: "GitHub", href: "https://github.com", external: true },
-  { icon: Mail, label: "Email", href: "mailto:hello@lucaberger.com", external: false },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com", external: true },
 ];
 
 const Footer = () => {
@@ -19,8 +17,8 @@ const Footer = () => {
           <a
             key={s.label}
             href={s.href}
-            target={s.external ? "_blank" : undefined}
-            rel={s.external ? "noopener noreferrer" : undefined}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 group transition-all duration-200"
           >
             <s.icon
@@ -34,7 +32,7 @@ const Footer = () => {
         ))}
       </div>
       <p className="text-center text-xs text-muted-foreground mt-12">
-        © 2025 Luca Berger
+        © 2026 Luca Berger
       </p>
     </footer>
   );
