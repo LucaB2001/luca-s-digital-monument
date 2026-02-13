@@ -1,6 +1,5 @@
 const companies = [
   { name: "UFC", logo: "/logos/ufc.png", url: "https://ufc.com/" },
-  { name: "RIZIN Fighting Federation", logo: "/logos/rizin.png", url: "https://jp.rizinff.com/" },
   { name: "Ultra Super New", logo: "/logos/ultrasupernew.png", url: "https://ultrasupernew.com/" },
   { name: "First Round Management", logo: "/logos/frm.png", url: "https://1str.com/" },
   { name: "On The House", logo: "/logos/oth.png", url: "https://othnetwork.io/" },
