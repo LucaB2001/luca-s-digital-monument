@@ -1,9 +1,9 @@
 import { Linkedin, Instagram, Youtube } from "lucide-react";
 
 const socials = [
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", external: true },
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com", external: true },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com", external: true },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/lucaberger/", external: true },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/lucaberger999/", external: true },
+  { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@lucaberger999", external: true },
 ];
 
 const Footer = () => {

@@ -13,6 +13,7 @@ interface Location {
 const locations: Location[] = [
   // Lived
   { country: "United States", lat: 39.8283, lng: -98.5795, type: "lived" },
+  { country: "Hawaii", lat: 20.7984, lng: -156.3319, type: "lived" },
   { country: "France", lat: 46.6034, lng: 1.8883, type: "lived" },
   { country: "Japan", lat: 36.2048, lng: 138.2529, type: "lived" },
   { country: "Singapore", lat: 1.3521, lng: 103.8198, type: "lived" },
@@ -107,12 +108,22 @@ const MapSection = () => {
       zoomControl: true,
     });
 
-    // Dark blue ocean + green land + no labels tile
+    // Base layer: Esri World Physical Map (green land, blue ocean)
     L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png",
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
       {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-        maxZoom: 18,
+        attribution:
+          "Tiles &copy; Esri &mdash; Source: US National Park Service",
+        maxZoom: 8,
+      }
+    ).addTo(map);
+
+    // Borders overlay: country boundaries, no labels
+    L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places_Alternate/MapServer/tile/{z}/{y}/{x}",
+      {
+        maxZoom: 8,
+        opacity: 0.45,
       }
     ).addTo(map);
 
@@ -144,7 +155,11 @@ const MapSection = () => {
         Where I've Been
       </h2>
       <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-md">
-        <div ref={mapRef} className="w-full h-[400px] md:h-[550px]" />
+        <div
+          ref={mapRef}
+          className="w-full h-[400px] md:h-[550px]"
+          style={{ filter: "saturate(1.6) hue-rotate(-10deg)" }}
+        />
       </div>
 
       {/* Legend */}

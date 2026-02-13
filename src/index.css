@@ -56,4 +56,10 @@
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
   }
+
+  /* Hide any scroll indicators on the hero carousel */
+  .overflow-clip::-webkit-scrollbar,
+  [style*="overflow: clip"]::-webkit-scrollbar {
+    display: none;
+  }
 }

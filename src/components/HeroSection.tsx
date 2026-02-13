@@ -32,7 +32,7 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <div className="w-full overflow-hidden">
+      <div className="w-full" style={{ overflow: "clip" }}>
         <motion.div
           className="flex"
           style={{ gap }}

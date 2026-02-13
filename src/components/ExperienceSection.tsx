@@ -1,7 +1,9 @@
 const companies = [
-  { name: "Ultra Super New", initials: "USN" },
-  { name: "UFC", initials: "UFC" },
-  { name: "RIZIN Fighting Federation", initials: "RIZIN" },
+  { name: "UFC", logo: "/logos/ufc.png", url: "https://ufc.com/" },
+  { name: "RIZIN Fighting Federation", logo: "/logos/rizin.png", url: "https://jp.rizinff.com/" },
+  { name: "Ultra Super New", logo: "/logos/ultrasupernew.png", url: "https://ultrasupernew.com/" },
+  { name: "First Round Management", logo: "/logos/frm.png", url: "https://1str.com/" },
+  { name: "On The House", logo: "/logos/oth.png", url: "https://othnetwork.io/" },
 ];
 
 const ExperienceSection = () => {
@@ -10,17 +12,21 @@ const ExperienceSection = () => {
       <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12 tracking-tight">
         Companies I've Worked With
       </h2>
-      <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-12 md:gap-16">
         {companies.map((company) => (
-          <div
+          <a
             key={company.name}
-            className="flex flex-col items-center justify-center py-8 transition-all duration-200 hover:opacity-80 hover:scale-105"
+            href={company.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center transition-all duration-200 hover:opacity-80 hover:scale-105"
           >
-            <div className="w-20 h-20 rounded-xl bg-secondary flex items-center justify-center mb-4">
-              <span className="text-xl font-bold text-foreground">{company.initials}</span>
-            </div>
-            <p className="text-sm font-medium text-foreground text-center">{company.name}</p>
-          </div>
+            <img
+              src={company.logo}
+              alt={company.name}
+              className="h-16 md:h-20 w-auto object-contain"
+            />
+          </a>
         ))}
       </div>
     </section>
