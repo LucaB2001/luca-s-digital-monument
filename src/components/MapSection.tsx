@@ -107,6 +107,7 @@ const MapSection = () => {
       zoom: 2,
       scrollWheelZoom: false,
       zoomControl: true,
+      worldCopyJump: true,
     });
 
     // Base layer: Esri World Physical Map (green land, blue ocean)

@@ -146,9 +146,7 @@ const TimelineSection = () => {
         <h2 className="text-[32px] md:text-[40px] font-semibold text-center text-black mb-3">
           My Journey
         </h2>
-        <p className="text-center text-[#666666] text-base md:text-lg mb-[60px]">
-          My evolution through the years
-        </p>
+        <div className="mb-[60px]" />
 
         <div className="relative py-8">
           {/* Desktop vertical line */}
