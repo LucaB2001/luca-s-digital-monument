@@ -48,12 +48,20 @@ const Navbar = () => {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-6 py-4 transition-all duration-200",
+          "fixed top-0 left-0 right-0 z-50 flex items-center px-6 py-4 transition-all duration-200",
           scrolled ? "bg-background/95 backdrop-blur shadow-sm" : "bg-transparent"
         )}
       >
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-2 rounded-full bg-secondary/80 backdrop-blur p-1.5">
+        {/* Logo - fixed left */}
+        <button
+          onClick={() => scrollTo("#home", "Home")}
+          className="text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity shrink-0"
+        >
+          Luca Berger
+        </button>
+
+        {/* Desktop nav - centered absolutely */}
+        <div className="hidden md:flex items-center gap-2 rounded-full bg-secondary/80 backdrop-blur p-1.5 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) => (
             <button
               key={item.label}
@@ -71,7 +79,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile hamburger */}
-        <div className="md:hidden flex w-full justify-end">
+        <div className="md:hidden ml-auto">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="p-2 text-foreground"
